@@ -154,6 +154,21 @@ footer{padding:4rem;border-top:1px solid var(--card-border);display:flex;justify
   .filter-nav,.count-bar{padding-left:1.5rem;padding-right:1.5rem}
   .about-text{padding:2rem 1.5rem}
   footer{padding:2rem 1.5rem}
+  .mobile.centred  {
+    width: 100%;
+    margin: 0;
+  }
+
+  .mobile.grid {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+    .mobile.card-instagram {
+    max-width: none;
+  }
+
 }
 
 .centred {
@@ -177,7 +192,7 @@ footer{padding:4rem;border-top:1px solid var(--card-border);display:flex;justify
 </head>
 <body>
 
-<header class="centred">
+<header class="centred mobile">
   <div class="name">Samuel<br><span>Guilloton</span></div>
   <div class="tagline">Creative Filmmaker — Lille</div>
   <div class="header-meta">
@@ -185,7 +200,7 @@ footer{padding:4rem;border-top:1px solid var(--card-border);display:flex;justify
   </div>
 </header>
 
-<div class="bts-banner centred">
+<div class="bts-banner centred mobile">
   <div class="bts-img">
     <img src="https://res.cloudinary.com/da3ilmcao/image/upload/f_auto,q_auto/bts-1">
     <div class="bts-label">Behind the Scenes</div>
@@ -196,7 +211,7 @@ footer{padding:4rem;border-top:1px solid var(--card-border);display:flex;justify
   </div>
 </div>
 
-<div class="about centred">
+<div class="about centred mobile">
   <div class="about-photo">
     <img src="https://res.cloudinary.com/da3ilmcao/image/upload/f_auto,q_auto/photo-profile">
   </div>
@@ -224,7 +239,7 @@ footer{padding:4rem;border-top:1px solid var(--card-border);display:flex;justify
   </div>
 </div>
 
-<nav class="filter-nav centred">
+<nav class="filter-nav centred mobile">
   <span class="filter-label">Filter</span>
   <button class="filter-btn active" data-filter="all">All</button>
   <button class="filter-btn" data-filter="clip">Music Videos</button>
@@ -232,9 +247,9 @@ footer{padding:4rem;border-top:1px solid var(--card-border);display:flex;justify
   <button class="filter-btn" data-filter="instagram">Instagram</button>
 </nav>
 
-<div class="count-bar centred" id="count-bar">10 Projects</div>
+<div class="count-bar centred mobile" id="count-bar">10 Projects</div>
 
-<div class="grid" id="grid"></div>
+<div class="grid mobile" id="grid"></div>
 
 <footer class="centred">
   <div class="footer-name">Samuel Guilloton</div>
@@ -293,7 +308,7 @@ function buildGrid(data){
     const card=document.createElement('div');
     card.className =
     v.type === 'instagram'
-    ? 'card card-instagram'
+    ? 'card card-instagram mobile'
     : 'card card-landscape';
 
     card.innerHTML=`<video src="${videoUrl(v.public_id,v.timecode)}" muted loop playsinline poster="${thumbUrl(v.public_id,v.timecode)}"></video><div class="card-overlay"></div><div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div><div class="card-info"><div class="card-artist">${v.artist}</div><div class="card-title">${v.title}</div><div class="card-role">${v.role}</div></div>`;
