@@ -17,7 +17,7 @@
 body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden}
 
 /* HEADER */
-header{position:relative;padding:5rem 4rem 3rem;border-bottom:1px solid var(--card-border);overflow:hidden}
+header{position:relative;padding:5rem 0rem 3rem;border-bottom:1px solid var(--card-border);overflow:hidden}
 header::before{content:'';position:absolute;top:-60px;right:-60px;width:320px;height:320px;border:1px solid rgba(232,213,160,0.12);border-radius:50%;pointer-events:none}
 header::after{content:'';position:absolute;top:-20px;right:-20px;width:160px;height:160px;border:1px solid rgba(232,213,160,0.2);border-radius:50%;pointer-events:none}
 .name{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,8vw,96px);letter-spacing:.04em;line-height:.9;color:var(--white)}
@@ -25,7 +25,7 @@ header::after{content:'';position:absolute;top:-20px;right:-20px;width:160px;hei
 .tagline{margin-top:1.5rem;font-size:13px;font-weight:300;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:1.5rem}
 .tagline::before{content:'';display:inline-block;width:32px;height:1px;background:var(--accent);flex-shrink:0}
 .header-meta{margin-top:2.5rem;display:flex;gap:1rem;flex-wrap:wrap}
-.meta-pill{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(232,213,160,0.3);padding:6px 14px;border-radius:100px}
+.meta-pill{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(232,213,160,0.3);padding:6px 14px;border-radius:100px;font-weight: bold;}
 
 /* BTS BANNER */
 .bts-banner{display:grid;grid-template-columns:1fr 1fr;height:340px;overflow:hidden}
@@ -36,7 +36,7 @@ header::after{content:'';position:absolute;top:-20px;right:-20px;width:160px;hei
 
 /* ABOUT */
 .about{display:grid;grid-template-columns:280px 1fr;gap:0;border-bottom:1px solid var(--card-border)}
-.about-photo{position:relative;overflow:hidden;height:420px}
+.about-photo{position:relative;overflow:hidden;height: 547px;}
 .about-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;filter:grayscale(20%) brightness(0.85)}
 .about-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 60%,var(--black));pointer-events:none}
 .about-text{padding:3.5rem 4rem;display:flex;flex-direction:column;justify-content:center;border-left:1px solid var(--card-border)}
@@ -49,21 +49,22 @@ header::after{content:'';position:absolute;top:-20px;right:-20px;width:160px;hei
 .stat-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:4px}
 
 /* FILTER NAV */
-.filter-nav{padding:2rem 4rem 1rem;display:flex;gap:.75rem;flex-wrap:wrap;align-items:center}
+.filter-nav{padding:2rem 0rem 1rem;display:flex;gap:.75rem;flex-wrap:wrap;align-items:center}
 .filter-label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-right:.5rem}
 .filter-btn{background:transparent;border:1px solid var(--card-border);color:rgba(245,242,237,0.6);font-family:'DM Sans',sans-serif;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:6px 16px;border-radius:100px;cursor:pointer;transition:all .2s ease}
 .filter-btn:hover,.filter-btn.active{background:var(--accent);border-color:var(--accent);color:var(--black);font-weight:500}
 
 /* COUNT */
-.count-bar{padding:1rem 4rem 1.5rem;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.count-bar{padding:1rem 0rem 1.5rem;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 
 /* GRID */
 .grid{
   max-width:1500px;
   margin:0 auto;
-  padding:20px;
+  padding:20px 0;
   column-count:3;
   column-gap:18px;
+  width: 60%;
 }
 
 
@@ -180,8 +181,6 @@ footer{padding:4rem;border-top:1px solid var(--card-border);display:flex;justify
   <div class="name">Samuel<br><span>Guilloton</span></div>
   <div class="tagline">Creative Filmmaker — Lille</div>
   <div class="header-meta">
-    <span class="meta-pill">Music Videos</span>
-    <span class="meta-pill">Aftermovies</span>
     <span class="meta-pill">Directing · Cinematography · Editing</span>
   </div>
 </header>
