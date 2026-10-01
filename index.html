@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Samuel Guilloton — Vidéaste</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
@@ -47,7 +47,7 @@ header::after{content:'';position:absolute;top:-20px;right:-20px;width:160px;hei
 .about-stats{display:flex;gap:3rem;margin-top:2.5rem}
 .stat-num{font-family:'Bebas Neue',sans-serif;font-size:42px;letter-spacing:.04em;color:var(--accent);line-height:1}
 .stat-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:4px}
-
+.stat-label-contact{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:4px}
 /* FILTER NAV */
 .filter-nav{padding:2rem 0rem 1rem;display:flex;gap:.75rem;flex-wrap:wrap;align-items:center}
 .filter-label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-right:.5rem}
@@ -84,7 +84,7 @@ header::after{content:'';position:absolute;top:-20px;right:-20px;width:160px;hei
   aspect-ratio:16/9;
 }
 
-.card-instagram{
+.card-social{
     width:100%;
   max-width:300px;
   aspect-ratio:9/16;
@@ -92,7 +92,7 @@ header::after{content:'';position:absolute;top:-20px;right:-20px;width:160px;hei
   margin-right:auto;
 }
 
-.card-instagram video{
+.card-social video{
     width:100%;
   height:100%;
   object-fit:cover;
@@ -144,6 +144,22 @@ footer{padding:4rem;border-top:1px solid var(--card-border);display:flex;justify
 .footer-name{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:.06em;color:rgba(245,242,237,0.2)}
 .footer-contact{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 
+/* SCROLL REVEAL */
+.reveal{
+  opacity:0;
+  transform:translateY(64px) scale(.96);
+  transition:opacity .9s cubic-bezier(.16,.8,.3,1),transform .9s cubic-bezier(.16,.8,.3,1);
+  will-change:opacity,transform;
+}
+.reveal.reveal-visible{
+  opacity:1;
+  transform:translateY(0) scale(1);
+}
+.grid .reveal{transition-duration:.7s}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1!important;transform:none!important;transition:none!important}
+}
+
 @media(max-width:768px){
   .about{grid-template-columns:1fr}
   .about-photo{height:280px}
@@ -165,7 +181,7 @@ footer{padding:4rem;border-top:1px solid var(--card-border);display:flex;justify
     padding: 0;
   }
 
-    .mobile.card-instagram {
+    .mobile.card-social {
     max-width: none;
   }
 
@@ -193,29 +209,29 @@ footer{padding:4rem;border-top:1px solid var(--card-border);display:flex;justify
 <body>
 
 <header class="centred mobile">
-  <div class="name">Samuel<br><span>Guilloton</span></div>
-  <div class="tagline">Creative Filmmaker — Lille</div>
-  <div class="header-meta">
+  <div class="name reveal">Samuel<br><span>Guilloton</span></div>
+  <div class="tagline reveal">Creative Filmmaker — Lille</div>
+  <div class="header-meta reveal">
     <span class="meta-pill">Directing · Cinematography · Editing</span>
   </div>
 </header>
 
 <div class="bts-banner centred mobile">
-  <div class="bts-img">
+  <div class="bts-img reveal">
     <img src="https://res.cloudinary.com/da3ilmcao/image/upload/f_auto,q_auto/bts-1">
     <div class="bts-label">Behind the Scenes</div>
   </div>
-  <div class="bts-img">
+  <div class="bts-img reveal">
      <img src="https://res.cloudinary.com/da3ilmcao/image/upload/f_auto,q_auto/bts-4">
     <div class="bts-label">Behind the Scenes</div>
   </div>
 </div>
 
 <div class="about centred mobile">
-  <div class="about-photo">
+  <div class="about-photo reveal">
     <img src="https://res.cloudinary.com/da3ilmcao/image/upload/f_auto,q_auto/photo-profile">
   </div>
-  <div class="about-text">
+  <div class="about-text reveal">
     <div class="about-label">About</div>
     <div class="about-title">Creative<br>Filmmaker</div>
     <div class="about-body">
@@ -224,34 +240,40 @@ footer{padding:4rem;border-top:1px solid var(--card-border);display:flex;justify
     </div>
     <div class="about-stats">
       <div>
-        <div class="stat-num">10+</div>
-        <div class="stat-label">Music Videos</div>
+        <div class="stat-num">15+</div>
+        <div class="stat-label">Projects</div>
       </div>
       <div>
         <div class="stat-num">5+</div>
         <div class="stat-label">Artists</div>
       </div>
       <div>
-        <div class="stat-num">2+</div>
+        <div class="stat-num">3+</div>
         <div class="stat-label">Years</div>
+      </div>
+    </div>
+    <div class="contact">
+       <div class="about-label"></div>
+      <div>
+        <div class="stat-label-contact"><strong>  </strong></div>
       </div>
     </div>
   </div>
 </div>
 
-<nav class="filter-nav centred mobile">
+<nav class="filter-nav centred mobile reveal">
   <span class="filter-label">Filter</span>
   <button class="filter-btn active" data-filter="all">All</button>
   <button class="filter-btn" data-filter="clip">Music Videos</button>
   <button class="filter-btn" data-filter="after">Aftermovies</button>
-  <button class="filter-btn" data-filter="instagram">Instagram</button>
+  <button class="filter-btn" data-filter="social">Social media</button>
 </nav>
 
 <div class="count-bar centred mobile" id="count-bar">10 Projects</div>
 
 <div class="grid mobile" id="grid"></div>
 
-<footer class="centred">
+<footer class="centred reveal">
   <div class="footer-name">Samuel Guilloton</div>
   <div class="footer-contact">Filmmaker · Lille, France</div>
 </footer>
@@ -290,25 +312,42 @@ const videos=[
   {public_id:"Thd",title:"THD",artist:"Jidma ft Swift Guad",role:"Réalisation · Cadrage · Montage",timecode:155,type:"clip"},
   {public_id:"Festival-Les-Vents-Contraires-2024",title:"After Movie 2024",artist:"Les Vents Contraires",role:"Réalisation · Cadrage · Montage",timecode:45,type:"after"},
   {public_id:"real-aftermovie",title:"Real Vents Contraires",artist:"Les Vents Contraires",role:"Réalisation · Cadrage · Montage",timecode:45,type:"after"},
-  {public_id:"lekdek-real-port",title:"Real Lekdek",artist:"Lekdek",role:"Réalisation · Cadrage · Montage",timecode:10,type:"instagram"},
-  {public_id:"lekdek-real-usine",title:"Real Lekdek",artist:"Lekdek",role:"Réalisation · Cadrage · Montage",timecode:10,type:"instagram"},
-  {public_id:"lekdek-real-station",title:"Real",artist:"Lekdek",role:"Réalisation · Cadrage · Montage",timecode:10,type:"instagram"},
-  {public_id:"concert-rap",title:"concert rap",artist:"Concert",role:"Réalisation · Cadrage · Montage",timecode:10,type:"instagram"},
-  {public_id:"xiii-amer-concert",title:"concert rap",artist:"Concert",role:"Réalisation · Cadrage · Montage",timecode:10,type:"instagram"},
+  {public_id:"lekdek-real-port",title:"Real Lekdek",artist:"Lekdek",role:"Réalisation · Cadrage · Montage",timecode:10,type:"social"},
+  {public_id:"lekdek-real-usine",title:"Real Lekdek",artist:"Lekdek",role:"Réalisation · Cadrage · Montage",timecode:10,type:"social"},
+  {public_id:"lekdek-real-station",title:"Real",artist:"Lekdek",role:"Réalisation · Cadrage · Montage",timecode:10,type:"social"},
+  {public_id:"concert-rap",title:"concert rap",artist:"Concert",role:"Réalisation · Cadrage · Montage",timecode:10,type:"social"},
+  {public_id:"xiii-amer-concert",title:"concert rap",artist:"Concert",role:"Réalisation · Cadrage · Montage",timecode:10,type:"social"},
 ];
 function videoUrl(pid,off){return`https://res.cloudinary.com/${CLOUD}/video/upload/so_${off}/${pid}.mp4`}
 function thumbUrl(pid,off){return`https://res.cloudinary.com/${CLOUD}/video/upload/so_${off},w_640,h_360,c_fill,q_auto,f_jpg/${pid}.jpg`}
 const grid=document.getElementById('grid');
 let filtered=[...videos];
 let currentIdx=0;
+
+/* Scroll reveal: elements fade/slide in when entering the viewport,
+   and reset when they leave, so the animation replays both scrolling
+   down and scrolling back up. */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    entry.target.classList.toggle('reveal-visible', entry.isIntersecting);
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -12% 0px' });
+
+function observeReveal(el){
+  el.classList.add('reveal');
+  revealObserver.observe(el);
+}
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
 function buildGrid(data){
   grid.innerHTML='';
   document.getElementById('count-bar').textContent=`${data.length} projet${data.length>1?'s':''}`;
   data.forEach((v,i)=>{
     const card=document.createElement('div');
     card.className =
-    v.type === 'instagram'
-    ? 'card card-instagram mobile'
+    v.type === 'social'
+    ? 'card card-social mobile'
     : 'card card-landscape';
 
     card.innerHTML=`<video src="${videoUrl(v.public_id,v.timecode)}" muted loop playsinline poster="${thumbUrl(v.public_id,v.timecode)}"></video><div class="card-overlay"></div><div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div><div class="card-info"><div class="card-artist">${v.artist}</div><div class="card-title">${v.title}</div><div class="card-role">${v.role}</div></div>`;
@@ -317,6 +356,7 @@ function buildGrid(data){
     card.addEventListener('mouseleave',()=>{vid.pause();vid.currentTime=0;});
     card.addEventListener('click',()=>openLightbox(i));
     grid.appendChild(card);
+    observeReveal(card);
   });
 }
 function openLightbox(idx){
@@ -329,7 +369,7 @@ function openLightbox(idx){
 
   lbVid.src=videoUrl(v.public_id,0);
 
-  if(v.type === 'instagram'){
+  if(v.type === 'social'){
     wrap.classList.add('vertical-video');
   }else{
     wrap.classList.remove('vertical-video');
