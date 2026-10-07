@@ -221,7 +221,7 @@ footer{padding:4rem;border-top:1px solid var(--card-border);display:flex;justify
   }
 
   .about-text {
-    margin-top: -100px;
+    margin-top: -200px;
   }
 
   .about::before {
@@ -235,6 +235,43 @@ footer{padding:4rem;border-top:1px solid var(--card-border);display:flex;justify
     border-radius: 134%;
     pointer-events: none;
   }
+}
+
+/* SERVICES */
+.services{padding:3.5rem 0 4rem;border-top:1px solid var(--card-border)}
+.services-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,4vw,52px);letter-spacing:.04em;line-height:1;color:var(--white);margin-bottom:2.5rem}
+.services-list{position:relative;margin-left:6px}
+.services-list::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:1px;background:var(--card-border)}
+.service-item{position:relative;padding:0 0 2.5rem 2.5rem;opacity:0;transform:translateY(var(--y,60px));transition:opacity .8s ease,transform .9s cubic-bezier(.16,.8,.3,1)}
+.service-item:last-child{padding-bottom:0}
+.service-item.reveal-visible{opacity:1;transform:translateY(0)}
+.service-item::before{content:'';position:absolute;left:-5px;top:8px;width:11px;height:11px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px var(--black);transform:scale(0);transition:transform .6s cubic-bezier(.34,1.56,.64,1) .2s}
+.service-item.reveal-visible::before{transform:scale(1)}
+.service-name{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:.05em;line-height:1;color:var(--white);margin-bottom:.5rem}
+.service-desc{font-size:13px;font-weight:300;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.services-layout{display:flex;justify-content:space-between;align-items:flex-start;gap:4rem}
+.contact-col{flex-shrink:0;width:min(380px,100%)}
+.contact-list{display:flex;flex-direction:column;gap:2rem}
+.contact-label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem}
+.contact-link{display:inline-block;font-size:18px;font-weight:300;letter-spacing:.04em;color:var(--white);text-decoration:none;border-bottom:1px solid var(--card-border);padding-bottom:4px;transition:color .25s ease,border-color .25s ease;word-break:break-all}
+.contact-link:hover{color:var(--accent);border-color:var(--accent)}
+.service-meta-pill{
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border-radius: 100px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+@media(prefers-reduced-motion:reduce){
+  .service-item,.service-item::before{opacity:1!important;transform:none!important;transition:none!important}
+}
+@media(max-width:768px){
+  .services{padding:2.5rem 1.5rem 3rem}
+  .services-layout{flex-direction:column;gap:3rem}
+  .contact-col{width:100%}
 }
 </style>
 </head>
@@ -308,6 +345,45 @@ footer{padding:4rem;border-top:1px solid var(--card-border);display:flex;justify
 
 <div class="grid mobile" id="grid"></div>
 
+<section class="services centred mobile">
+  <div class="services-layout">
+    <div class="services-col">
+      <div class="service-meta-pill reveal">Services</div>
+      <div class="services-list">
+        <div class="service-item">
+          <div class="service-name">Corporate</div>
+          <div class="service-desc">Interviews · Company films · Presentations</div>
+        </div>
+        <div class="service-item">
+          <div class="service-name">Brand Content</div>
+          <div class="service-desc">Campaigns · Product videos · Promotional films</div>
+        </div>
+        <div class="service-item">
+          <div class="service-name">Events</div>
+          <div class="service-desc">Aftermovies · Event coverage · Live content</div>
+        </div>
+        <div class="service-item">
+          <div class="service-name">Social Media</div>
+          <div class="service-desc">Reels · Short-form · Content creation</div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-col">
+      <div class="service-meta-pill reveal">Contact</div>
+      <div class="contact-list reveal">
+        <div>
+          <div class="contact-label">Email</div>
+          <a class="contact-link" href="mailto:samuel.guilloton.pro@gmail.com">samuel.guilloton.pro@gmail.com</a>
+        </div>
+        <div>
+          <div class="contact-label">Phone</div>
+          <a class="contact-link" href="tel:+33644377996">06 44 37 79 96</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer class="centred reveal">
   <div class="footer-name">Samuel Guilloton</div>
   <div class="footer-contact">Filmmaker · Lille, France</div>
@@ -374,6 +450,19 @@ function observeReveal(el){
 }
 
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+/* Services: chaque point entre par le haut ou par le bas selon le sens du scroll, et rejoue dans les deux sens */
+const serviceObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    const el = entry.target;
+    if (entry.isIntersecting) {
+      el.classList.add('reveal-visible');
+    } else {
+      el.style.setProperty('--y', entry.boundingClientRect.top < 0 ? '-60px' : '60px');
+      el.classList.remove('reveal-visible');
+    }
+  });
+}, { threshold: 0.3, rootMargin: '0px 0px -10% 0px' });
+document.querySelectorAll('.service-item').forEach(el => serviceObserver.observe(el));
 
 function buildGrid(data){
   grid.innerHTML='';
