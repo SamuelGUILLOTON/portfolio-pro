@@ -36,10 +36,10 @@ header::after{content:'';position:absolute;top:-20px;right:-20px;width:160px;hei
 
 /* ABOUT */
 .about{z-index: -999;position:relative;display:grid;grid-template-columns:280px 1fr;gap:0;border-bottom:1px solid var(--card-border)}
-.about-photo{position:relative;overflow:hidden;height: 547px;}
-.about-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;filter:grayscale(20%) brightness(0.85)}
+.about-photo{position:relative;overflow:visible;height: 547px;}
+.about-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;filter:grayscale(20%) brightness(0.85);overflow: visible;}
 .about-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 60%,var(--black));pointer-events:none}
-.about-text{padding:3.5rem 4rem 0 3.5rem;display:flex;flex-direction:column;justify-content:center;border-left:1px solid var(--card-border)}
+.about-text{padding:3.5rem 4rem 0 3.5rem;display:flex;flex-direction:column;justify-content:center;border-left:1px solid var(--card-border);background: var(--black);}
 .about-label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem}
 .about-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,4vw,52px);letter-spacing:.04em;line-height:1;color:var(--white);margin-bottom:1.5rem}
 .about-body{font-size:15px;font-weight:300;line-height:1.8;color:var(--muted);max-width:480px}
@@ -293,7 +293,7 @@ footer{padding:4rem;border-top:1px solid var(--card-border);display:flex;justify
 
 <div class="about centred mobile">
   <div class="about-photo reveal">
-    <img src="https://res.cloudinary.com/da3ilmcao/image/upload/f_auto,q_auto/camiseta">
+    <img src="https://res.cloudinary.com/da3ilmcao/image/upload/f_auto,q_auto/sam_photo">
   </div>
   <div class="about-text reveal">
     <div class="about-label">About</div>
@@ -335,9 +335,9 @@ footer{padding:4rem;border-top:1px solid var(--card-border);display:flex;justify
 
 <nav class="filter-nav centred mobile reveal">
   <span class="filter-label">Filter</span>
-  <button class="filter-btn active" data-filter="all">All</button>
+  <button class="filter-btn" data-filter="all">All</button>
   <button class="filter-btn" data-filter="clip">Creative / Brand Films</button>
-  <button class="filter-btn" data-filter="after">Events</button>
+  <button class="filter-btn active" data-filter="after">Events</button>
   <button class="filter-btn" data-filter="social">Social media</button>
 </nav>
 
@@ -432,7 +432,7 @@ const videos=[
 function videoUrl(pid,off){return`https://res.cloudinary.com/${CLOUD}/video/upload/so_${off}/${pid}.mp4`}
 function thumbUrl(pid,off){return`https://res.cloudinary.com/${CLOUD}/video/upload/so_${off},w_640,h_360,c_fill,q_auto,f_jpg/${pid}.jpg`}
 const grid=document.getElementById('grid');
-let filtered=[...videos];
+let filtered=videos.filter(v=>v.type==='after');
 let currentIdx=0;
 
 /* Scroll reveal: elements fade/slide in when entering the viewport,
