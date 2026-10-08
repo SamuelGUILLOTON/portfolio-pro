@@ -169,10 +169,12 @@ footer{padding:4rem;border-top:1px solid var(--card-border);display:flex;justify
 
 @media(max-width:768px){
   .about{grid-template-columns:1fr}
-  .about-photo{height:280px}
+  .about-photo{height:280px;width: 65%;margin-left: 145px;  overflow: hidden;}
+  .about-photo img{transform: scale(-1, 1);image-orientation: revert;width: 100%;}
   .about-photo::after{background:linear-gradient(to top,var(--black) 0%,transparent 60%)}
   .bts-banner{grid-template-columns:1fr;height:auto}
   .bts-img{height:200px}
+  .about-text{background: none;}
   header{padding:3rem 1.5rem 2rem}
   .filter-nav,.count-bar{padding-left:1.5rem;padding-right:1.5rem}
   .about-text{padding:2rem 1.5rem}
@@ -216,9 +218,6 @@ footer{padding:4rem;border-top:1px solid var(--card-border);display:flex;justify
     width: 65%;
   }
 
-  .about .about-photo {
-    width: 0%;
-  }
 
   .about-text {
     margin-top: -200px;
